@@ -1,7 +1,13 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+import os 
 
+#por problema en Render añadiremos las siguientes lineas de codigo para detectar el puerto
+port = int(os.environ.get("PORT", 8501))
+st._config.set_option("server.port", port)
+
+port = int(os.environ.get("PORT", 8501))
 
 car_data = pd.read_csv('notebooks/vehicles_us.csv')
 
@@ -13,7 +19,7 @@ hist_button = st.button("Build Histogram")
 
 #Boton1
 if hist_button: 
-    st.write("check out the dataset for the car sells")
+    st.write("Check out the dataset for the car sells")
     
    
     fig = px.histogram(car_data, x="odometer", title="Histogram")
@@ -24,7 +30,7 @@ if hist_button:
 scatter_button = st.button("Build scatter plot")
 #boton2
 if scatter_button:
-    st.write("scatter plot between the price and odometer")
+    st.write("Scatter plot between the price and odometer")
     
     
     fig_scatter = px.scatter(
