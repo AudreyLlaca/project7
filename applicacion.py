@@ -6,7 +6,7 @@ import plotly.express as px
 car_data = pd.read_csv('notebooks/vehicles_us.csv')
 
 # Crear un encabezado
-st.header("Check out the car data)
+st.header("Check out the car data")
 
 # Crear un botón
 hist_button = st.button("Build Histogram")
