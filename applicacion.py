@@ -7,39 +7,26 @@ import os
 port = int(os.environ.get("PORT", 8501))
 st._config.set_option("server.port", port)
 
-port = int(os.environ.get("PORT", 8501))
-
-car_data = pd.read_csv('notebooks/vehicles_us.csv')
+car_data = pd.read_csv('notebooks/vehicles_us.csv') 
 
 
-st.header("Check out the car data")
+st.header("Check out the car data below!")
 
 
-hist_button = st.button("Build Histogram")
+# Opcional, pero añadeas por criterio de evaluacion
+show_histogram = st.checkbox("Show histogram")
+show_scatterplot = st.checkbox("Show scatter plot")
 
-#Boton1
-if hist_button: 
-    st.write("Check out the dataset for the car sells")
-    
-   
-    fig = px.histogram(car_data, x="odometer", title="Histogram")
-    
-  
-    st.plotly_chart(fig, use_container_width=True)
 
-scatter_button = st.button("Build scatter plot")
-#boton2
-if scatter_button:
-    st.write("Scatter plot between the price and odometer")
-    
-    
+if show_histogram:
+    st.write("**Histogram of the odometer**")
+    fig_hist = px.histogram(car_data, x="odometer", title="Histogram of the odometer")
+    st.plotly_chart(fig_hist, use_container_width=True)
+
+
+if show_scatterplot:
+    st.write("**Sacatterplot for price and odometer**")
     fig_scatter = px.scatter(
-        car_data, 
-        x="odometer", 
-        y="price", 
-        title="Price vs Odometer",
-        labels={"odometer", "price USD"}
+        car_data, x="odometer", y="price", title="Scatterplot for Price vs Odometer"
     )
-    
-   
     st.plotly_chart(fig_scatter, use_container_width=True)
