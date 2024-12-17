@@ -3,7 +3,7 @@ import pandas as pd
 import plotly.express as px
 
 # Leer los datos en un DataFrame
-car_data = pd.read_csv('vehicles_us.csv')
+car_data = pd.read_csv('notebooks/vehicles_us.csv')
 
 # Crear un encabezado
 st.header("Aplicación de Streamlit para visualización de datos de coches")
